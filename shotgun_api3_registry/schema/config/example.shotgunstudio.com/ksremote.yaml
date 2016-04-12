@@ -1,0 +1,8 @@
+entities:
+    CustomEntity04: # RemotePack
+        field_aliases: {}
+
+entity_aliases:
+    "RemotePack": "CustomEntity04"
+    "ksremote:Pack": "CustomEntity04"
+

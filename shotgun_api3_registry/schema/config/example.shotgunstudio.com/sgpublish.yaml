@@ -1,0 +1,11 @@
+# The contents of this file are just Mike toying with the sgschema.
+# Destroy this all when there is something good to put in place.
+
+entities:
+    PublishEvent:
+        field_aliases:
+            "sgpublish:type": "sg_type"
+
+entity_aliases:
+    "sgpublish:Publish": "PublishEvent"
+

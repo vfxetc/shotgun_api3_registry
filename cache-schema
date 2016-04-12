@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import pkg_resources
+
+root = os.path.abspath(os.path.join(__file__, '..'))
+sys.path.append(root)
+sys.path.append(os.path.join(root, '..', 'sgschema'))
+
+
+from shotgun_api3_registry import connect
+
+from sgschema import Schema
+
+config_dir = os.path.join(root, 'shotgun_api3_registry', 'schema', 'config')
+cache_dir = os.path.join(root, 'shotgun_api3_registry', 'schema', 'cache')
+
+for name in os.listdir(config_dir):
+
+    path = os.path.join(config_dir, name)
+    if name.startswith('.') or not os.path.isdir(path):
+        continue
+
+    base_url = 'https://' + name
+    print base_url
+
+    schema = Schema()
+    schema.read(connect(server=base_url, use_cache=False))
+    schema.load_entry_points(base_url, verbose=True)
+    schema.dump(os.path.join(cache_dir, '%s.json' % name))
+

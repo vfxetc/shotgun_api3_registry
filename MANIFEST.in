@@ -1,0 +1,1 @@
+recursive-include shotgun_api3_registry *.json
